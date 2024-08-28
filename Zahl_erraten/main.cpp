@@ -12,26 +12,37 @@ int main()
 	int ratezahl = -1;
 	char nochmal = 'j';
 	int versuche = 0;
+	int zufallszahl_obere_grenze = 0;
+	int zufallszahl_untere_grenze = 0;
 	
 	//srand(time(0));
 	
 	do 
 	{ 
+		//zufallszahl grenze eingeben
+		cout << "Geben Sie Ihre zufallszahlsunteregrenze : " << endl;
+		cin >> zufallszahl_untere_grenze;
+		cout << "Gebenen Sie Ihre zufallszahlsobereregrenze : " << endl;
+		cin >> zufallszahl_obere_grenze;
 		//Versuche auf 0 setzen
 		versuche = 0;
+
+		
 
 		//Zufallszahl erzeugen
 		srand(time(NULL));
 		zufallszahl = rand();
 
-		//zufallszahl in den bereich von 1 bis 100 anpassen
-		zufallszahl = zufallszahl % 100 + 1;
+		//zufallszahl in den bereich  anpassen
+		zufallszahl = zufallszahl % (zufallszahl_obere_grenze - zufallszahl_untere_grenze + 1 ) + zufallszahl_untere_grenze;
+		
 
 		
 		do
 		{
 			//Eingabe
-			cout << "Ihre Ratezahl  zwischen 1 und 100 : " << endl;
+			
+			cout << "Ihre Ratezahl ist zwischen " << zufallszahl_untere_grenze << " und " << zufallszahl_obere_grenze << " : " << endl;
 			cin >> ratezahl;
 
 			//Versuche inkrementieren
@@ -62,9 +73,13 @@ int main()
 			cout << endl;
 			
 			
+			
 	}
 	while (nochmal == 'j' || nochmal == 'J');
 
 	
+
+	
 	return 0;
 }
+
